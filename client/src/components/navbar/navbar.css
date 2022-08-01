@@ -1,0 +1,13 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    float: right;
+}
+
+.navbarItem {
+    margin-inline: 2rem;
+    font-size: 1.2rem;
+}
+.navbarItem:hover{
+    color: var(--color-secondary);
+}
