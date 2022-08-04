@@ -1,6 +1,6 @@
 export function GetISRC(trackID,respuesta){
     //console.log("Prueba")
-    fetch(`/track/${trackID}`)
+    fetch(`https://xportify-server.herokuapp.com/track/${trackID}`)
       .then(res => res.json())
       .then(
         (result) => {
