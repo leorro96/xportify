@@ -1,14 +1,13 @@
 import React from 'react'
 import "./header.css"
-import { Navbar } from '../../components/navbar/Navbar'
-
+import { Container } from '@mui/material';
+import Navbar from '../../components/navbar/navbar';
 
 const Header = ()=>{
   return (
-    <header>
-      <a href="/" className="logo">Xportify</a>
-      <Navbar />
-    </header>
+    <Container component="header" maxWidth={false} style={{padding:0}}>
+      <Navbar></Navbar>
+    </Container>
   )
 }
 

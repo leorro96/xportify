@@ -1,9 +1,12 @@
 import React from 'react'
 import "./footer.css"
+import { Container } from '@mui/material'
 
 const Footer = () => {
   return (
-    <footer>Footer</footer>
+    <Container component="footer" maxWidth={false}>
+    Footer
+  </Container>
   )
 }
 

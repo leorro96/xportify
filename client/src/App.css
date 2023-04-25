@@ -1,58 +1,14 @@
 *{
-    box-sizing: border-box;
-    padding: 0;
     margin: 0;
-    scroll-behavior: smooth;
-    outline: none;
-}
-/*Body styles*/
-body{
-    background-color: var(--color-bg);
-    font-family: var(--font-family);
-    color: var(--color-text);
-}
-/*Link styles*/
-a{
-    color: unset;
-    text-decoration: none;
-}
-/*For design*/
-header,footer,main,section{
-    /*border: 1px solid white;*/
+    padding: 0;
 }
 
 header{
-    min-height: 15vh;
-}
-main{
-    min-height: 70vh;
-}
-#about{
-    height: 70vh;
-}
-#main{
-    height: 100vh;
+    height: 7vh;
 }
 footer{
-    min-height: 15vh;
+    height: 13vh;
 }
-
-
-
-
-
-/*Responsive tablets*/
-@media screen and (max-width:700px){
-    
-}
-/*Responsive mobile*/
-@media screen and (max-width:550px){
-    .header a {
-        float: none;
-        display: block;
-        text-align: left;
-      }
-      .header-right {
-        float: none;
-      }
+.main{
+    min-height: 80vh;
 }

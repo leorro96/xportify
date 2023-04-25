@@ -12,6 +12,7 @@ class spotifyAPIcontroller {
         });
     }
     //Spotify API Methods
+    //TRACK
     getTrackData(trackID,respuesta){
         const options = {
             url: `https://api.spotify.com/v1/tracks/${trackID}`,
@@ -26,6 +27,52 @@ class spotifyAPIcontroller {
             respuesta(response);
         });
     }
+    //ALBUM
+    getAlbumData(albumID,respuesta){
+        const options = {
+            url: `https://api.spotify.com/v1/albums/${albumID}`,
+            headers: {
+                'Authorization': 'Bearer ' + this.authToken
+            },
+        };
+        request.get(options, (err, res, body) => {
+            if (err) { return console.log("Ha habido un error en el request: "+err); }
+            const response=JSON.parse(body);
+            //console.log("Respuesta de Spotify Track: "+JSON.stringify(response));
+            respuesta(response);
+        });
+    }
+    //PLAYLIST
+    getPlaylistData(playlistID,respuesta){
+        const options = {
+            url: `https://api.spotify.com/v1/playlists/${playlistID}`,
+            headers: {
+                'Authorization': 'Bearer ' + this.authToken
+            },
+        };
+        request.get(options, (err, res, body) => {
+            if (err) { return console.log("Ha habido un error en el request: "+err); }
+            const response=JSON.parse(body);
+            //console.log("Respuesta de Spotify Track: "+JSON.stringify(response));
+            respuesta(response);
+        });
+    }
+    //PLAYLIST
+    getPlaylistItems(playlistID,offset, respuesta){
+        const options = {
+            url: `https://api.spotify.com/v1/playlists/${playlistID}/tracks?limit=50&offset=${offset}`,
+            headers: {
+                'Authorization': 'Bearer ' + this.authToken
+            },
+        };
+        request.get(options, (err, res, body) => {
+            if (err) { return console.log("Ha habido un error en el request: "+err); }
+            const response=JSON.parse(body);
+            //console.log("Respuesta de Spotify Track: "+JSON.stringify(response));
+            respuesta(response);
+        });
+    }
+    //Authorize app
     authorizeApp(respuesta){
         const options = {
             url: 'https://accounts.spotify.com/api/token',
