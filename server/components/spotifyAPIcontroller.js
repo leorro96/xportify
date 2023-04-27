@@ -3,8 +3,8 @@ const request = require('request');
 
 class spotifyAPIcontroller {
     constructor(){
-        this.client_id = '03d427b66de64288aa3ff645be1c4df7';
-        this.client_secret = 'bcb6f26df3924f46bc33753bab8bcd54'; 
+        this.client_id = '';
+        this.client_secret = ''; 
         this.redirect_uri = 'http://localhost:3000/callback'; 
         this.authorizeApp((authToken)=>{
             this.authToken = authToken;
