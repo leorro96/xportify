@@ -49,17 +49,19 @@ const TrackData=()=>{
     //Get album data
     useEffect(()=>{
         async function fetchData(){
-            await GetData(data["album"]["id"],"album", (respuesta)=> data["album"]["label"]=respuesta["label"])
+            var respuesta=await GetData(data["album"]["id"],"album")
+            data["album"]["label"]=respuesta["label"]
+
         }
         fetchData()
     },[])
     
     return (
-        <Grid container direction={{xs:"column", md:"row"}} xs={10}>
-            <Grid item justifyContent="center" alignItems="center" xs={4} display="flex">
+        <Grid container direction={{xs:"column", md:"row"}}>
+            <Grid item={true} justifyContent="center" alignItems="center" xs={4} display="flex">
                 <a href={data["album"]["external_urls"]["spotify"]} target="_blank" rel="noreferrer"><Box component="img" display="flex" sx={{maxHeight:400, maxWidth:400,heigh:"auto", width:"100%"}} src={data["album"]["images"][0]["url"]} alt={data["album"]["name"]} /></a>
             </Grid>
-            <Grid item display="flex" justifyContent={{xs:"center", md:"start"}} alignItems="center" xs={8}>
+            <Grid item={true} display="flex" justifyContent={{xs:"center", md:"start"}} alignItems="center" xs={8}>
                 <Stack 
                 component="div"
                 sx={{

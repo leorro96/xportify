@@ -32,19 +32,17 @@ const AlbumData=()=>{
     }
     useEffect(()=>{
         async function fetchData(){
-            await data["tracks"]["items"].map((track)=>{
-                GetData(track["id"],"track", (respuesta)=> {
-                    respuesta["album"]["name"]=data["name"]
-                    respuesta["album"]["label"]=data["label"]
-                    respuesta["album"]["type"]=data["type"].charAt(0).toUpperCase()+data["type"].slice(1)
-                    respuesta["album"]["upc"]=data["external_ids"]["upc"]
-                    respuesta["album"]["copyright"]=data["copyrights"].map((line)=>line["type"]+":"+line["text"]).join("|")
-                    respuesta["duration_hhmmss"]=changeTime(parseInt(respuesta["duration_ms"]))
-                    setTracks(tracks => [...tracks, respuesta].sort((a,b)=>{
-                        return a["track_number"]-b["track_number"]
-                    }))
-                })
-                return track
+            data["tracks"]["items"].map(async (track)=>{
+                var trackData=await GetData(track["id"],"track")
+                trackData["album"]["name"]=data["name"]
+                trackData["album"]["label"]=data["label"]
+                trackData["album"]["type"]=data["type"].charAt(0).toUpperCase()+data["type"].slice(1)
+                trackData["album"]["upc"]=data["external_ids"]["upc"]
+                trackData["album"]["copyright"]=data["copyrights"].map((line)=>line["type"]+":"+line["text"]).join("|")
+                trackData["duration_hhmmss"]=changeTime(parseInt(trackData["duration_ms"]))
+                setTracks(tracks => [...tracks, trackData].sort((a,b)=>{
+                    return a["track_number"]-b["track_number"]
+                }))
             })
         }
         fetchData()

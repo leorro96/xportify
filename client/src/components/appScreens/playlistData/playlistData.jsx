@@ -23,17 +23,16 @@ const PlaylistData=()=>{
     }
     useEffect(()=>{
         async function fetchData(){
-            await GetData(data["id"],"playlist/items", (respuesta)=>{
-                respuesta.map((track)=>{
-                    track["playlist"]={
-                        "name":data["name"],
-                        "owner":data["owner"]["display_name"]
-                    }
-                    track["duration_hhmmss"]=changeTime(parseInt(track["duration_ms"]))
-                    return track
-                })
-                setTracks(respuesta)
+            var respuesta=await GetData(data["id"],"playlist/items")        
+            respuesta.map((track)=>{
+                track["playlist"]={
+                    "name":data["name"],
+                    "owner":data["owner"]["display_name"]
+                }
+                track["duration_hhmmss"]=changeTime(parseInt(track["duration_ms"]))
+                return track
             })
+            setTracks(respuesta)
         }
         fetchData()
     },[])
@@ -69,7 +68,7 @@ const PlaylistData=()=>{
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
-    console.log(data)
+    //console.log(data)
     return (
         <Stack direction={"column"}>
             <Grid container direction={{xs:"column", md:"row"}}>

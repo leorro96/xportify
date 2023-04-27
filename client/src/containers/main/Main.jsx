@@ -29,23 +29,23 @@ const Main = ()=>{
             switch(inputAssetLink.split("/")[3]){
                 case "album":
                     //Call getData --> Callback to setAppScreen("album")
-                    respuesta= await GetData(assetID,"album", (respuesta)=>{return respuesta})
+                    respuesta= await GetData(assetID,"album")
                     navigate("/album",{state: respuesta})
                     console.log("Call album data and display album container")
                     break;
                 case "playlist":
-                    respuesta= await GetData(assetID,"playlist",(respuesta)=>{return respuesta})
+                    respuesta= await GetData(assetID,"playlist")
                     navigate("/playlist",{state: respuesta})
                     console.log("Call playlist data and display playlist container")
                     break;
                 case "track":
-                    respuesta= await GetData(assetID,"track",(respuesta)=>{return respuesta})
+                    respuesta= await GetData(assetID,"track")
                     navigate("/track",{state: respuesta})
                     console.log("Call track data and display track container")
-                    console.log(respuesta)
+                    //console.log(respuesta)
                     break;
                 case "artist":
-                    respuesta= await GetData(assetID,"artist",(respuesta)=>{return respuesta})
+                    respuesta= await GetData(assetID,"artist")
                     navigate("/artist",{state: respuesta})
                     console.log("Call artist data and display artist container")
                     break;
